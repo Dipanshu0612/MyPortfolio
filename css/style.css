@@ -153,7 +153,7 @@ span{
 .about-dp img{
     width: 35vw;
     animation: floatImage 4s ease-in-out infinite;
-
+    margin-right: 3rem;
 }
 .heading{
     text-align: center;
@@ -255,9 +255,10 @@ span{
 }
 .projCont{
     display: grid;
-    grid-template-columns: 45% 45%;
+    grid-template-columns: 38% 38%;
     align-items: center;
-    gap: 7.5rem;
+    gap: 2.5rem;
+    justify-content: center;
 }
 .projbox{
     display: flex;
@@ -265,7 +266,6 @@ span{
     border-radius: 2rem;
     box-shadow: 0 0 1rem var(--bg-color);
     overflow: hidden;
-     
 }
 .projbox img{
     width: 100%;
@@ -295,10 +295,10 @@ span{
     
 }
 .projlayer h4{
-     font-size: 3rem;
+     font-size: 2.5rem;
 }
 .projlayer p{
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin: .3rem 0 1rem ;
 }
 .projlayer a{
