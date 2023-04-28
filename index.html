@@ -5,18 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Dipanshu's Portfolio</title>
     <!-- ICONS -->
     <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/968172cca8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.17.0/tabler-icons.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
     <header class="header">
 
-        <a href="#" class="logo">Dipanshu <span>Mishra</span></a>
+        <a href="#" class="logo"><span id="myname">Dipanshu</span></a>
         <i class="fa-solid fa-bars" id="menuicon"></i>
 
         <nav class="navbar">
@@ -32,7 +37,7 @@
     <section class="home" id="home">
         <div class="home-content">
             <h3>Hello! I am</h3>
-            <h1>Dipanshu Mishra</h1>
+            <h1 id="MAINname">Dipanshu Mishra</h1>
             <h3>And I'm a <span class="multi"></span></h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum dicta facere, id, dolore veniam voluptate
                 perspiciatis eius obcaecati adipisci odio minus! Et aliquid architecto perferendis. Odit fugiat tempore
@@ -42,29 +47,38 @@
                         class="fa-brands fa-linkedin"></i></a>
                 <a href="https://www.instagram.com/_.dipanshu._06/"><i class="fa-brands fa-square-instagram"></i></a>
                 <a href="https://github.com/Dipanshu0612"><i class="fa-brands fa-github"></i></a>
-                <a href=""><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=918485974624&text=Hello, more information!"
+                    className="contact__button" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
             <div>
-                <a href="https://drive.google.com/file/d/1YpdTVbFstxpeI09LfF30Hd2cdzn8bEjg/view?usp=share_link" download="Dipanshu's Resume" class="btn">Download Resume</a>
+                <a href="#about" class="btn">Read More <i class="fa-solid fa-down"></i></a>
             </div>
         </div>
 
         <div class="home-dp">
-            <img src="/Display Picture.png" alt="">
+            <img src="/Project-Images/Display Picture.png" alt="">
         </div>
     </section>
 
     <section class="about" id="about">
         <div class="about-dp">
-            <img src="/2.png" alt="">
+            <img src="/Project-Images/2.png" alt="">
         </div>
         <div class="about-content">
             <h2 class="heading">About <span>Me!</span></h2>
             <h3>FrontEnd Developer</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae maiores nesciunt voluptates. Amet dolorum
-                sint beatae earum dolor distinctio iure maxime quaerat expedita culpa! Consequuntur est beatae molestias
-                illo neque nam tenetur enim culpa.</p>
-            <a href="#" class="btn">Read More</a>
+            <p>I am a Student currently enrolled in B-Tech Computer Science in Parul University. I really enjoy to code
+                and to solve problems. I always had passion about computers and tech related to it. Always had the
+                curiosity to know how a Computer does magic. Thus wanted to pursue my career in Computer field.
+                <br>
+                <br>
+                I am currently learning programming and so far I have learned C++,Python ,Java and FrontEnd Technologies
+                like HTML,CSS, JavaScript, ReactJS and SQL. I also regularly do CP which I think is the best way to
+                learn new concepts and different ways to apply them and of course to compete against the best in the
+                world.
+            </p>
+            <a href="/Assests/Dipanshu's Resume.pdf" download="Dipanshu's Resume" class="btn">Download Resume <i
+                    class="fa-solid fa-file"></i></a>
         </div>
     </section>
 
@@ -117,6 +131,10 @@
                         <i class='bx bxs-data'></i>
                         <span>MySQL</span>
                     </div>
+                    <div class="data">
+                        <i class="ti ti-brand-tailwind"></i>
+                        <span>Tailwind CSS</span>
+                    </div>
                 </div>
 
 
@@ -124,7 +142,7 @@
             <div class="ContBox QUALI">
                 <i class="fa-solid fa-user-graduate"></i>
                 <h3 class="Qual">Qualifications</h3>
-                
+
                 <div class="QualCont">
                     <div class="item">
                         <i class="fa-solid fa-graduation-cap"></i>
@@ -153,42 +171,64 @@
 
     <section class="projects" id="projects">
         <h2 class="heading">Latest <span>Projects!</span></h2>
-        
+
         <div class="projCont">
             <div class="projbox">
                 <img src="/Project-Images/Realtor.png" alt="Realtor Clone-React JS">
                 <div class="projlayer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos ducimus quisquam eaque! Nostrum, obcaecati at aliquid tempora suscipit natus recusandae sunt esse nihil optio, accusamus hic quisquam debitis quae, officia odio reiciendis voluptas perspiciatis?</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Realtor Clone</h4>
+                    <p>A React JS project that lists houses available for rent and sale. Made by using Tailwind CSS and
+                        React JS.</p>
+                    <a href="#projects" onclick="myalert()"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="projbox">
                 <img src="/Project-Images/HOTD.jpg" alt="House of the Dragon Alternate Website">
                 <div class="projlayer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos ducimus quisquam eaque! Nostrum, obcaecati at aliquid tempora suscipit natus recusandae sunt esse nihil optio, accusamus hic quisquam debitis quae, officia odio reiciendis voluptas perspiciatis?</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>House of the Dragon Website</h4>
+                    <p>An alternative HOTD website where you can see the Trailer, Cast and much more. Made by basic
+                        HTML, CSS, JavaScript.</p>
+                    <a href="https://house-of-the-dragon-alternate.netlify.app/"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="projbox">
                 <img src="/Project-Images/Superhero-Info.png" alt="Superhero-Info Generator">
                 <div class="projlayer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos ducimus quisquam eaque! Nostrum, obcaecati at aliquid tempora suscipit natus recusandae sunt esse nihil optio, accusamus hic quisquam debitis quae, officia odio reiciendis voluptas perspiciatis?</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Superhero Stat Generator</h4>
+                    <p>A stat generator for your favorite superhero! You can search for your favorite superhero by their
+                        name or you can randomly generate a superhero for you with their stats such as Intelligence,
+                        Strength, etc. Uses an API to load stats.</p>
+                    <a href="https://superhero-info-genrator-dipanshu.netlify.app/"><i
+                            class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+            <div class="projbox">
+                <img src="/Project-Images/MusicPlayer.png" alt="Music Player">
+                <div class="projlayer">
+                    <h4>Music Player by Emotions</h4>
+                    <p>A project build using Python and its libraries along with HTML, CSS, JavaScript for the UI. You can randomly select a song or the AI will identify your emotions and song will be played accordingly.</p>
+                    <a href="https://music-player-emotions-dipanshu.netlify.app/"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="projbox">
                 <img src="/Project-Images/Tic-tac-Toe.png" alt="Tic Tac Toe Game">
                 <div class="projlayer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos ducimus quisquam eaque! Nostrum, obcaecati at aliquid tempora suscipit natus recusandae sunt esse nihil optio, accusamus hic quisquam debitis quae, officia odio reiciendis voluptas perspiciatis?</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Tic-Tac-Toe Game</h4>
+                    <p>A simple tic tac toe game to play with friends. Supports 2 Players who can play against each
+                        other. Background music along with win-loss music as well.</p>
+                    <a href="https://tictactoe-dipanshu.netlify.app/"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+            <div class="projbox">
+                <img src="/Project-Images/calci.png" alt="Calculator">
+                <div class="projlayer">
+                    <h4>Calculator</h4>
+                    <p>A simple calculator made using basic JavaScript. You can do addition, subtraction, multiplication, and division in this calculator.</p>
+                    <a href="https://tictactoe-dipanshu.netlify.app/"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
         </div>
-    
+
     </section>
 
     <section class="contact" id="contact">
@@ -212,11 +252,11 @@
         </div>
 
         <div class="footer-social">
-            <a href="https://www.linkedin.com/in/dipanshu-mishra-696a0622a"><i
-                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/dipanshu-mishra-696a0622a"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://www.instagram.com/_.dipanshu._06/"><i class="fa-brands fa-square-instagram"></i></a>
             <a href="https://github.com/Dipanshu0612"><i class="fa-brands fa-github"></i></a>
-            <a href=""><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=918485974624&text=Hello, more information!"
+                className="contact__button" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
 
         <div class="icontop">
