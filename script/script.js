@@ -8,7 +8,19 @@ menuicon.onclick = () =>{
 }
 
 function myalert(){
-    alert("This project is still in development!")
+    Toastify({
+        text: "This project is still in development!",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "center",
+        stopOnFocus: true,
+        style: {
+            background: "#ff914d"
+        },
+        onClick: function(){} 
+      }).showToast();
 }
 
 let sections=document.querySelectorAll('section');
@@ -56,7 +68,55 @@ const typed=new Typed('.multi',{
 });
 
 
+function sendMail(){
+    let param={
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        number: document.getElementById('number').value,
+        message: document.getElementById('message').value,
+    };
 
+
+    if(param.name!="" && param.email!="" && param.message!="" && param.number!=""){
+    let serviceID="service_jhf61wa";
+    let templateID="template_0ln1l0f";
+    emailjs.send(serviceID,templateID,param).then(res=>{
+        Toastify({
+            text: "Your Message was sent Succesfully!!",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            style: {
+                background: "#ff914d"
+            },
+            onClick: function(){} 
+          }).showToast();
+        document.getElementById('name').value=''
+        document.getElementById('email').value=''
+        document.getElementById('number').value=''
+        document.getElementById('message').value=''
+        res.preventDefault()
+    }).catch((err)=> console.log(err));
+}
+    else{
+        Toastify({
+            text: "Please complete the form before submitting!!",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            style: {
+                background: "#ff914d"
+            },
+            onClick: function(){} 
+          }).showToast();
+    }
+}
 
 
 

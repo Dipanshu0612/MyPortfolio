@@ -97,6 +97,7 @@ a.active {
     font-size: 3.2rem;
     font-weight: 700;
     margin-top: 1rem;
+    color: rgba(245, 245, 245, 0.595);
 }
 
 .home-content h1 {
@@ -395,7 +396,7 @@ a.active {
 }
 
 .contact form {
-    max-width: 70rem;
+    max-width: 80rem;
     margin: 1rem auto;
     text-align: center;
     margin-bottom: 3rem;
@@ -529,7 +530,7 @@ a.active {
     }
 
     .home-content .btn {
-        display: flex;
+        display: inline-flex;
         justify-content: space-around;
         align-items: center;
     }
@@ -559,6 +560,20 @@ a.active {
     .projCont {
         grid-template-columns: 50% 50%;
     }
+    .contact form{
+        width: 100%;
+    }
+    .footer{
+        align-items: center;
+        justify-items: center;
+        gap: 3rem;
+        flex-direction: column;
+    }
+    .footer-social,.footer p{
+        margin: 0;
+    }
+
+
 }
 
 @media screen and (max-width:1012px) {

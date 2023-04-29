@@ -14,7 +14,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("ukBt_PEmhJv_ihXGS");
+        })();
+    </script>
 
 </head>
 
@@ -36,12 +44,15 @@
 
     <section class="home" id="home">
         <div class="home-content">
+            <div class="maintext">
             <h3>Hello! I am</h3>
             <h1 id="MAINname">Dipanshu Mishra</h1>
             <h3>And I'm a <span class="multi"></span></h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum dicta facere, id, dolore veniam voluptate
-                perspiciatis eius obcaecati adipisci odio minus! Et aliquid architecto perferendis. Odit fugiat tempore
-                ipsum eius?</p>
+            <p>A tech enthusiatic, young developer who's keen to <span>learn</span> , <span>develop</span> and
+                <span>compete </span> with the best in the business. Want to interact with me? <span> Click
+                    Below!</span>
+            </p>
+        </div>
             <div class="social">
                 <a href="https://www.linkedin.com/in/dipanshu-mishra-696a0622a"><i
                         class="fa-brands fa-linkedin"></i></a>
@@ -50,14 +61,14 @@
                 <a href="https://api.whatsapp.com/send?phone=918485974624&text=Hello, more information!"
                     className="contact__button" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
-            <div>
+            <div class="homebtn">
                 <a href="#about" class="btn">Read More <i class="fa-solid fa-down"></i></a>
             </div>
         </div>
-
         <div class="home-dp">
             <img src="/Project-Images/Display Picture.png" alt="">
         </div>
+        
     </section>
 
     <section class="about" id="about">
@@ -76,6 +87,10 @@
                 like HTML,CSS, JavaScript, ReactJS and SQL. I also regularly do CP which I think is the best way to
                 learn new concepts and different ways to apply them and of course to compete against the best in the
                 world.
+                <br>
+                <br>
+                I am currently working on making more projects and thus master myself on the technologies.
+                <br>
             </p>
             <a href="/Assests/Dipanshu's Resume.pdf" download="Dipanshu's Resume" class="btn">Download Resume <i
                     class="fa-solid fa-file"></i></a>
@@ -206,8 +221,11 @@
                 <img src="/Project-Images/MusicPlayer.png" alt="Music Player">
                 <div class="projlayer">
                     <h4>Music Player by Emotions</h4>
-                    <p>A project build using Python and its libraries along with HTML, CSS, JavaScript for the UI. You can randomly select a song or the AI will identify your emotions and song will be played accordingly.</p>
-                    <a href="https://music-player-emotions-dipanshu.netlify.app/"><i class="bx bx-link-external"></i></a>
+                    <p>A project build using Python and its libraries along with HTML, CSS, JavaScript for the UI. You
+                        can randomly select a song or the AI will identify your emotions and song will be played
+                        accordingly.</p>
+                    <a href="https://music-player-emotions-dipanshu.netlify.app/"><i
+                            class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="projbox">
@@ -223,7 +241,8 @@
                 <img src="/Project-Images/calci.png" alt="Calculator">
                 <div class="projlayer">
                     <h4>Calculator</h4>
-                    <p>A simple calculator made using basic JavaScript. You can do addition, subtraction, multiplication, and division in this calculator.</p>
+                    <p>A simple calculator made using basic JavaScript. You can do addition, subtraction,
+                        multiplication, and division in this calculator.</p>
                     <a href="https://tictactoe-dipanshu.netlify.app/"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
@@ -236,13 +255,13 @@
 
         <form action="#">
             <div class="input-box">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email Address">
-                <input type="number" placeholder="Mobile Number">
+                <input type="text" placeholder="Full Name" id="name" required>
+                <input type="email" placeholder="Email Address" id="email" required>
+                <input type="number" placeholder="Mobile Number" id="number" required>
             </div>
 
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-            <button type="submit" class="btn">Send Message</button>
+            <textarea name="" id="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn" onclick="sendMail()">Send Message</button>
         </form>
     </section>
 
@@ -264,6 +283,7 @@
         </div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="/script/script.js"></script>
