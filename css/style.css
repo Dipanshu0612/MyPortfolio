@@ -26,9 +26,10 @@ html {
 }
 
 body {
+    width: 100%;
+    height: 100%;
     background: var(--bg-color);
     color: var(--text-color);
-    width: fit-content;
     font-family: 'Bebas Neue', cursive;
     font-family: 'Josefin Sans', sans-serif;
     
@@ -312,9 +313,9 @@ a.active {
 
 .projCont {
     display: grid;
-    grid-template-columns: repeat(3,38rem);
+    grid-template-columns: repeat(3,33rem);
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     justify-content: center;
 }
 
@@ -542,7 +543,6 @@ a.active {
 
     .about {
         flex-direction: column-reverse;
-        width: 111%;
     }
 
     .about-dp img {
@@ -561,7 +561,7 @@ a.active {
         grid-template-columns: 50% 50%;
     }
     .contact form{
-        width: 100%;
+        padding: 5rem;
     }
     .footer{
         align-items: center;
@@ -587,11 +587,11 @@ a.active {
     }
 
     .projbox {
-        width: 45vw;
+        width: 60vw;
     }
 
     .contact form {
-        padding: 10rem;
+        padding: 5rem;
     }
 
     .contact h2 {
