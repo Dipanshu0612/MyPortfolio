@@ -44,7 +44,7 @@ window.onscroll = () =>{
     header.classList.toggle('sticky',window.scrollY > 100);
     menuicon.classList.remove('fa-x');
     navbar.classList.remove('active');
-};
+};  
 
 ScrollReveal({
      reset: true,
@@ -55,7 +55,7 @@ ScrollReveal({
 
 ScrollReveal().reveal('.home-content, .heading, .about-content h2', {origin: 'top'});
 ScrollReveal().reveal('.home-dp, .contact form, .projCont, .about-content', {origin: 'bottom'});
-ScrollReveal().reveal('.SKILLS, .about-dp, .footer-social', {origin: 'left',delay:300});
+ScrollReveal().reveal('.SKILLS, .about-dp', {origin: 'left',delay:300});
 ScrollReveal().reveal('.QUALI', {origin: 'right',delay:300});
 
 
