@@ -175,7 +175,7 @@ a.active {
 
 }
 
-.btn:hover {
+.btn:hover , .projbtn:hover {
     background: var(--main-color);
     color: var(--second-bg-color);
 }
@@ -316,13 +316,13 @@ a.active {
 
 .projCont {
     display: grid;
-    grid-template-columns: repeat(3,33rem);
+    grid-template-columns: repeat(3,35rem);
     align-items: center;
     gap: 2rem;
     justify-content: center;
 }
 
-.projbox {
+.projbox , .projbox2{
     display: flex;
     position: relative;
     border-radius: 2rem;
@@ -333,23 +333,33 @@ a.active {
     transition: ease-in-out .5s;
 }
 
-.projbox img {
+.projbutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.projbtn{
+    
+}
+
+.projbox img , .projbox2 img {
     width: 100%;
     height: 100%;
     transition: .5s ease;
     object-fit: fill;
 }
 
-.projbox:hover{
+.projbox:hover , .projbox2:hover{
     border: 2px solid #ff914d;
     transform: scale(1.1);
 }
-.projbox:hover img {
+.projbox:hover img , .projbox2:hover img {
     transform: scale(1.1);
     opacity: 0.1;
 }
 
-.projbox:hover .projlayer {
+.projbox:hover .projlayer , .projbox2:hover .projlayer{
     transform: translateY(0);
 }
 

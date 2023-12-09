@@ -118,5 +118,22 @@ function sendMail(){
     }
 }
 
+let projbtn=document.getElementById('projbtn')
 
+let count=1;
+projbtn.onclick=()=>{
+    count+=1;
+    if(count%2==0){
+    document.querySelectorAll('.projbox2').forEach(ele =>{
+        ele.style.display="none"
+    })
+    document.getElementsByClassName("projbtn")[0].innerText="Show More";
+}
+else{
+    document.querySelectorAll('.projbox2').forEach(ele =>{
+        ele.style.display="flex"
+    })
+    document.getElementsByClassName("projbtn")[0].innerText="Show Less";
 
+}
+}
