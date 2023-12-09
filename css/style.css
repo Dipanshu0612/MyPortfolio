@@ -322,6 +322,7 @@ a.active {
     justify-content: center;
 }
 
+
 .projbox , .projbox2{
     display: flex;
     position: relative;
@@ -332,15 +333,15 @@ a.active {
     height: 100%;
     transition: ease-in-out .5s;
 }
+.projbox2{
+    display: none;
+}
 
 .projbutton{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 5rem;
-}
-.projbtn{
-    
 }
 
 .projbox img , .projbox2 img {
