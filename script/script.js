@@ -60,7 +60,7 @@ ScrollReveal().reveal('.QUALI', {origin: 'right',delay:300});
 
 
 const typed=new Typed('.multi',{
-    strings:['FrontEnd Developer...', 'Programmer...', 'Student...'],
+    strings:['Full Stack Developer...', 'Programmer...', 'Student...'],
     typeSpeed:70,
     backSpeed:70,
     backDelay:1000,
@@ -127,13 +127,13 @@ projbtn.onclick=()=>{
     document.querySelectorAll('.projbox2').forEach(ele =>{
         ele.style.display="none"
     })
-    document.getElementsByClassName("projbtn")[0].innerText="Show More";
+    projbtn.innerText="Show More";
 }
 else{
     document.querySelectorAll('.projbox2').forEach(ele =>{
         ele.style.display="flex"
     })
-    document.getElementsByClassName("projbtn")[0].innerText="Show Less";
+    projbtn.innerText="Show Less";
 
 }
 }

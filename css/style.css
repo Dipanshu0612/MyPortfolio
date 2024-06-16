@@ -40,7 +40,7 @@ body {
 
 section {
     min-height: 100vh;
-    padding: 10rem 9% 2rem;
+    padding: 10rem 5% 2rem;
     width: 100%;
 }
 
@@ -213,97 +213,140 @@ a.active {
     margin: 2rem 0;
 }
 
-.skills h2 {
-    margin-bottom: 1.5rem;
-}
 
 .Container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10rem;
     text-align: center;
+    gap: 2.5rem;
+    overflow: hidden;
+    margin-top: 1rem;
 }
 
-.Container .ContBox {
-    /* flex: 1 1 20rem; */
+.SkillBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     background: var(--second-bg-color);
-    padding: 3rem 2rem 4rem;
+    padding: 1rem 0rem;
     border-radius: 2rem;
     border: .2rem solid var(--main-color);
     transition: .5s ease;
+    align-items: center;
+    min-height: 24rem;
+    min-width: 18rem;
+}
+.SkillBox:hover{
+    box-shadow: 0 0 1rem var(--main-color);
 }
 
-.Container .ContBox:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 2.5rem var(--main-color);
-    cursor: pointer;
-}
-
-.ContBox {
-    display: inline;
-    line-height: 3rem;
-}
-
-.ContBox i {
+.SKILLS_1{
+    display: flex;
+    justify-content: center;
+    padding: 1rem 1rem;
+    gap: .8rem;
+    align-items: center;
+    padding: auto;
     font-size: 3rem;
+    width: fit-content;
+    color: white;
+}
+.SKILLS_1 i{
     color: var(--main-color);
 }
-
-.ContBox h3 {
-    font-size: 3rem;
-    padding-top: 1.2rem;
+.SKILLS_2{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    padding: 1rem 0 0 0;
+    /* overflow: hidden; */
+    position: relative;
+    cursor: pointer;
 }
-
-.ContBox p {
-    font-size: 1.5rem;
+.SKILLS_2:hover .skill{
+    animation-play-state: paused;
 }
-
-.skillList {
-    margin-top: 2rem;
-    margin-right: 1.7rem;
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 50% 50%;
-    gap: 3rem;
-    grid-auto-flow: row;
-    float: inline-start;
-}
-
-.skillList .data span {
-    color: aliceblue;
-    font-size: 2.5rem;
-    text-align: center;
-    padding: .5rem;
-    padding-bottom: 1.2rem;
-}
-
-.skillList i:hover,
-.QualCont i:hover {
-    color: whitesmoke
-}
-
-.QualCont {
-    gap: 3rem;
+.skill{
+    position: absolute;
+    left: 100%;
+    width: 12rem;
+    height: 12rem!important;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    animation: slide 10s linear infinite;
+    animation-delay: calc(10s / 15 * (var(--pos) - 1));
 }
-
-.QualCont span {
+@keyframes slide{
+    from{
+        left:100%;
+    }
+    to{
+        left:-70rem;
+    }
+}
+.skill i{
+    font-size: 6rem;
+}
+.mongo{
+    font-size: 5rem!important;
+}
+.skill:hover{
+    color: var(--main-color);
+    background-color: var(--bg-color);
+    transition: .3s ease-in-out;
+    scale: 1.1;
+}
+.skill h3{
+    margin-top: 1rem;
     font-size: 2rem;
-    padding: 0.7rem;
-    color: whitesmoke;
 }
 
-.Qual {
+.Qualification{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 20rem;
     padding-bottom: 1rem;
-    font-size: 2rem !important;
 }
-
-.QualCont i {
-    font-size: 1.5rem;
+.qual{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 20px;
+    border: 2px solid var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
+.qual i{
+    font-size: 3.5rem;
+}
+.qual h3{
+    font-size: 2rem;
+}
+.qual h4{
+    font-size: 1.2rem;
+}
+.qual h5{
+    font-size: 2rem;
+}
+.qual:hover{
+    box-shadow: 0 0 1rem var(--main-color);
+    background: var(--second-bg-color);
+    color: var(--main-color);
 }
 
 .projects {
