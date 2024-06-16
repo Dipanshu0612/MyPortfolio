@@ -53,10 +53,10 @@ ScrollReveal({
      delay: 200
 });
 
-ScrollReveal().reveal('.home-content, .heading, .about-content h2', {origin: 'top'});
-ScrollReveal().reveal('.home-dp, .contact form, .projCont, .about-content', {origin: 'bottom'});
-ScrollReveal().reveal('.SKILLS, .about-dp', {origin: 'left',delay:300});
-ScrollReveal().reveal('.QUALI', {origin: 'right',delay:300});
+ScrollReveal().reveal('.home-content, .heading, .about-content h2, .SkillBox', {origin: 'top'});
+ScrollReveal().reveal('.home-dp, .contact form, .projCont, .q2, .about-content', {origin: 'bottom'});
+ScrollReveal().reveal('.q1, .about-dp', {origin: 'left',delay:300});
+ScrollReveal().reveal('.q3', {origin: 'right',delay:300});
 
 
 const typed=new Typed('.multi',{

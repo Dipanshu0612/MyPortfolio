@@ -286,10 +286,10 @@ a.active {
 }
 @keyframes slide{
     from{
-        left:100%;
+        left:-70rem;
     }
     to{
-        left:-70rem;
+        left:100%;
     }
 }
 .skill i{
