@@ -213,16 +213,18 @@ a.active {
     margin: 2rem 0;
 }
 
-
+.skills{
+    margin: 0;
+}
 .Container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
-    gap: 2.5rem;
     overflow: hidden;
     margin-top: 1rem;
+    min-height: 60rem;
 }
 
 .SkillBox {
@@ -249,7 +251,7 @@ a.active {
     gap: .8rem;
     align-items: center;
     padding: auto;
-    font-size: 3rem;
+    font-size: 2rem;
     width: fit-content;
     color: white;
 }
@@ -311,15 +313,32 @@ a.active {
 
 .Qualification{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     width: 100%;
     height: 20rem;
     padding-bottom: 1rem;
+    margin-bottom: 5rem;
+}
+.QUAL_1{
+    display: flex;
+    font-size:2rem;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+}
+.QUAL_1 i{
+    color: var(--main-color);
+}
+.qualbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 .qual{
-    width: 20rem;
-    height: 20rem;
+    width: 18rem;
+    height: 18rem;
     border-radius: 20px;
     border: 2px solid var(--main-color);
     display: flex;
@@ -332,10 +351,10 @@ a.active {
     cursor: pointer;
 }
 .qual i{
-    font-size: 3.5rem;
+    font-size: 3rem;
 }
 .qual h3{
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 .qual h4{
     font-size: 1.2rem;
@@ -639,10 +658,48 @@ a.active {
         width: 70vw;
     }
 
-    .Container {
-        padding-bottom: 5rem;
+    @keyframes slide{
+        from{
+            left:-150rem;
+        }
+        to{
+            left:100%;
+        }
     }
-
+    .Container{
+        flex-wrap: wrap;
+    }
+    .Qualification{
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .qual{
+        width: 15rem;
+        height: 15rem;
+        border-radius: 20px;
+        border: 2px solid var(--main-color);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 .5rem;
+        transition: .3s ease-in-out;
+        cursor: pointer;
+    }
+    .qual i{
+        font-size: 2.5rem;
+    }
+    .qual h3{
+        font-size: 1.5rem;
+    }
+    .qual h4{
+        font-size: 0.8rem;
+    }
+    .qual h5{
+        font-size: 1rem;
+    }
     .skills .heading {
         padding-bottom: 2rem;
     }
@@ -684,5 +741,32 @@ a.active {
 @media screen and (max-width:570px) {
     .projCont{
         grid-template-columns: 1fr;
+    }
+    .qual{
+        width: 12rem;
+        height: 12rem;
+        border-radius: 20px;
+        border: 2px solid var(--main-color);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 .5rem;
+        transition: .3s ease-in-out;
+        cursor: pointer;
+    }
+    .qual i{
+        font-size: 2rem;
+    }
+    .qual h3{
+        font-size: 1.2rem;
+    }
+    .qual h4{
+        font-size: 0.6rem;
+    }
+    .qual h5{
+        font-size: 0.8rem;
     }
 }
