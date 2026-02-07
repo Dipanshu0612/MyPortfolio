@@ -44,11 +44,13 @@ A modern, high-performance portfolio website built with Next.js 15, TypeScript, 
 ### Installation
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -80,8 +82,8 @@ npm start
 │   ├── utils.ts            # Utility functions
 │   └── data.ts             # Portfolio data
 └── public/
-    ├── Project-Images/     # Project screenshots
-    └── Assests/            # Resume and other assets
+    ├── project-images/     # Project screenshots
+    └── assests/            # Resume and other assets
 ```
 
 ## Customization
@@ -89,6 +91,7 @@ npm start
 ### Update Personal Information
 
 Edit `lib/data.ts` to update:
+
 - Personal info (name, email, location)
 - Social media links
 - Skills and technologies
@@ -99,6 +102,7 @@ Edit `lib/data.ts` to update:
 ### Modify Theme Colors
 
 Edit `tailwind.config.ts` and `app/globals.css` to customize:
+
 - Color palette
 - Typography
 - Spacing
@@ -129,6 +133,7 @@ Edit `tailwind.config.ts` and `app/globals.css` to customize:
 ### Other Platforms
 
 The project can be deployed to any platform that supports Next.js:
+
 - Netlify
 - AWS Amplify
 - Cloudflare Pages
@@ -148,6 +153,7 @@ MIT License - feel free to use this template for your own portfolio!
 ## Contact
 
 Dipanshu Mishra
+
 - GitHub: [@Dipanshu0612](https://github.com/Dipanshu0612)
 - LinkedIn: [dipanshu-mishra](https://www.linkedin.com/in/dipanshu-mishra-696a0622a)
 

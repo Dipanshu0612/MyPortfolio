@@ -1,11 +1,13 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { FloatingCodeLight } from "@/components/floating-code";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { personalInfo } from "@/lib/data";
-import { Mail, Send, Github, Linkedin, Instagram, MapPin } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { ArrowUpRight, Mail, MapPin, Phone, Send } from "lucide-react";
+import { useRef, useState } from "react";
+import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -27,83 +29,128 @@ export default function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <section id="contact" ref={ref} className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4">
+    <section id="contact" ref={ref} className="py-24 relative">
+      <div className="absolute inset-0 bg-secondary/20" />
+      <div className="absolute inset-0 dot-pattern opacity-10" />
+      <FloatingCodeLight count={3} />
+      <div className="orb orb-cyan w-[300px] h-[300px] -top-20 right-20 opacity-20" />
+      <div className="orb orb-blue w-[200px] h-[200px] bottom-10 left-10 opacity-20" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Let&apos;s connect!
+            Have a project in mind or want to collaborate? Let&apos;s connect.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          {/* Contact info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <Card className="glass border-primary/20 h-full">
+            <Card className="glass border-border h-full">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+                <h3 className="text-xl font-bold mb-6">Contact Information</h3>
 
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Mail className="h-5 w-5 text-primary" />
+                <div className="space-y-5 mb-8">
+                  {[
+                    {
+                      icon: Mail,
+                      label: "Email",
+                      value: personalInfo.email,
+                      href: `mailto:${personalInfo.email}`,
+                    },
+                    {
+                      icon: Phone,
+                      label: "Phone",
+                      value: personalInfo.phone,
+                      href: `tel:${personalInfo.phone}`,
+                    },
+                    {
+                      icon: MapPin,
+                      label: "Location",
+                      value: personalInfo.location,
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex items-start gap-4 group"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <item.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-muted-foreground mb-0.5">
+                          {item.label}
+                        </p>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            className="text-sm font-medium hover:text-primary transition-colors inline-flex items-center gap-1"
+                          >
+                            {item.value}
+                            <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </a>
+                        ) : (
+                          <p className="text-sm font-medium">{item.value}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-medium mb-1">Email</p>
-                      <a
-                        href={`mailto:${personalInfo.email}`}
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        {personalInfo.email}
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium mb-1">Location</p>
-                      <p className="text-muted-foreground">
-                        {personalInfo.location}
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
                 <div className="pt-6 border-t border-border">
-                  <p className="font-medium mb-4">Follow Me</p>
+                  <p className="text-sm font-medium mb-4 text-muted-foreground">
+                    Connect with me
+                  </p>
                   <div className="flex gap-3">
                     {[
-                      { icon: Github, href: personalInfo.social.github },
-                      { icon: Linkedin, href: personalInfo.social.linkedin },
-                      { icon: Instagram, href: personalInfo.social.instagram },
-                    ].map((social, index) => (
+                      {
+                        icon: FaGithub,
+                        href: personalInfo.social.github,
+                        label: "GitHub",
+                      },
+                      {
+                        icon: FaLinkedin,
+                        href: personalInfo.social.linkedin,
+                        label: "LinkedIn",
+                      },
+                      {
+                        icon: FaInstagram,
+                        href: personalInfo.social.instagram,
+                        label: "Instagram",
+                      },
+                      {
+                        icon: FaWhatsapp,
+                        href: personalInfo.social.whatsapp,
+                        label: "WhatsApp",
+                      },
+                    ].map((social) => (
                       <motion.a
-                        key={index}
+                        key={social.label}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="w-12 h-12 rounded-lg glass flex items-center justify-center hover:bg-primary/20 transition-colors border border-primary/20"
+                        aria-label={social.label}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-11 h-11 rounded-xl glass flex items-center justify-center hover:border-primary/40 transition-all"
                       >
                         <social.icon className="h-5 w-5" />
                       </motion.a>
@@ -114,14 +161,15 @@ export default function Contact() {
             </Card>
           </motion.div>
 
+          {/* Contact form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <Card className="glass border-primary/20">
+            <Card className="glass border-border">
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <label
                       htmlFor="name"
@@ -136,7 +184,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-background border border-input focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl bg-background border border-input focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none text-sm"
                       placeholder="Your name"
                     />
                   </div>
@@ -155,7 +203,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-background border border-input focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl bg-background border border-input focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none text-sm"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -173,9 +221,9 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows={6}
-                      className="w-full px-4 py-3 rounded-lg bg-background border border-input focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none"
-                      placeholder="Your message here..."
+                      rows={5}
+                      className="w-full px-4 py-3 rounded-xl bg-background border border-input focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none text-sm"
+                      placeholder="Tell me about your project..."
                     />
                   </div>
 
@@ -187,10 +235,15 @@ export default function Contact() {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      "Sending..."
+                      <motion.span
+                        animate={{ opacity: [1, 0.5, 1] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                      >
+                        Sending...
+                      </motion.span>
                     ) : (
                       <>
-                        <Send className="mr-2 h-5 w-5" />
+                        <Send className="mr-2 h-4 w-4" />
                         Send Message
                       </>
                     )}

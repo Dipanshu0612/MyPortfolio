@@ -1,37 +1,110 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowDown, Download, Mail, Github, Linkedin, Instagram } from "lucide-react";
+import FloatingCode from "@/components/floating-code";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/lib/data";
+import { motion } from "framer-motion";
+import { ArrowDown, Download, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
-const skills = ["Full Stack Developer", "Problem Solver", "Tech Enthusiast", "MERN Specialist"];
+const roles = [
+  "Full Stack Developer",
+  "Next.js Specialist",
+  "Production Engineer",
+  "Performance Optimizer",
+];
 
 export default function Hero() {
+  const [currentRole, setCurrentRole] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const role = roles[currentRole];
+    const speed = isDeleting ? 30 : 60;
+
+    if (!isDeleting && displayText === role) {
+      const timeout = setTimeout(() => setIsDeleting(true), 2000);
+      return () => clearTimeout(timeout);
+    }
+
+    if (isDeleting && displayText === "") {
+      setIsDeleting(false);
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setDisplayText(
+        isDeleting
+          ? role.slice(0, displayText.length - 1)
+          : role.slice(0, displayText.length + 1),
+      );
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentRole]);
+
   return (
     <section
       id="home"
       className="min-h-screen relative flex items-center justify-center overflow-hidden pt-20"
     >
-      <div className="absolute inset-0 gradient-mesh"></div>
+      {/* Gradient mesh background */}
+      <div className="absolute inset-0 gradient-mesh" />
 
+      {/* Floating code elements */}
+      <FloatingCode />
+
+      {/* Floating orbs */}
+      <motion.div
+        className="orb orb-blue w-[500px] h-[500px] -top-40 -right-40"
+        animate={{
+          x: [0, 30, -20, 0],
+          y: [0, -20, 30, 0],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="orb orb-cyan w-[400px] h-[400px] -bottom-32 -left-32"
+        animate={{
+          x: [0, -25, 15, 0],
+          y: [0, 20, -25, 0],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="orb orb-indigo w-[300px] h-[300px] top-1/3 left-1/4"
+        animate={{
+          x: [0, 20, -10, 0],
+          y: [0, -15, 20, 0],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Dot pattern overlay */}
+      <div className="absolute inset-0 dot-pattern opacity-30" />
+
+      {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-primary/30 rounded-full"
+            className="absolute w-1 h-1 bg-primary/40 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${10 + ((i * 7.2) % 80)}%`,
+              top: `${5 + ((i * 8.1) % 90)}%`,
             }}
             animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 1, 0.2],
+              y: [0, -40, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 4 + (i % 3),
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: i * 0.3,
             }}
           />
         ))}
@@ -39,17 +112,25 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-6"
+            className="mb-8"
           >
-            <span className="text-primary font-semibold text-lg">Hi, I&apos;m</span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+              </span>
+              Available for opportunities
+            </span>
           </motion.div>
 
+          {/* Name */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -57,33 +138,37 @@ export default function Hero() {
             <span className="gradient-text">{personalInfo.name}</span>
           </motion.h1>
 
+          {/* Typewriter role */}
           <motion.div
-            className="text-2xl md:text-4xl font-semibold mb-8 h-16 flex items-center justify-center"
+            className="text-xl md:text-3xl font-medium mb-8 h-12 flex items-center justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <span className="text-foreground/80">And I&apos;m a </span>
-            <motion.span
-              className="ml-3 text-primary"
-              key={skills[0]}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {skills[0]}
-            </motion.span>
+            <span className="text-muted-foreground">I am a </span>
+            <span className="ml-2 text-primary font-semibold">
+              {displayText}
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity }}
+                className="inline-block w-[3px] h-7 ml-0.5 bg-primary align-middle"
+              />
+            </span>
           </motion.div>
 
+          {/* Bio */}
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
+            className="text-base md:text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            {personalInfo.bio}
+            Shipping production-grade apps with Next.js. Experienced in scaling
+            platforms, optimizing performance by 30-40%, and integrating payment
+            systems for European businesses.
           </motion.p>
 
+          {/* CTA buttons */}
           <motion.div
             className="flex flex-wrap items-center justify-center gap-4 mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -99,36 +184,55 @@ export default function Hero() {
             <Button size="lg" variant="outline" asChild>
               <a href={personalInfo.resume} download>
                 <Download className="mr-2 h-5 w-5" />
-                Download Resume
+                Resume
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <a href="#contact">
                 <Mail className="mr-2 h-5 w-5" />
-                Contact Me
+                Contact
               </a>
             </Button>
           </motion.div>
 
+          {/* Social links */}
           <motion.div
-            className="flex items-center justify-center gap-4"
+            className="flex items-center justify-center gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             {[
-              { icon: Github, href: personalInfo.social.github },
-              { icon: Linkedin, href: personalInfo.social.linkedin },
-              { icon: Instagram, href: personalInfo.social.instagram },
-            ].map((social, index) => (
+              {
+                icon: FaGithub,
+                href: personalInfo.social.github,
+                label: "GitHub",
+              },
+              {
+                icon: FaLinkedin,
+                href: personalInfo.social.linkedin,
+                label: "LinkedIn",
+              },
+              {
+                icon: FaInstagram,
+                href: personalInfo.social.instagram,
+                label: "Instagram",
+              },
+              {
+                icon: FaWhatsapp,
+                href: personalInfo.social.whatsapp,
+                label: "WhatsApp",
+              },
+            ].map((social) => (
               <motion.a
-                key={index}
+                key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-colors"
+                aria-label={social.label}
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-11 h-11 rounded-xl glass flex items-center justify-center hover:border-primary/40 transition-all"
               >
                 <social.icon className="h-5 w-5" />
               </motion.a>
@@ -137,12 +241,16 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
+        className="absolute bottom-10 -translate-x-1/2 flex flex-col items-center gap-2"
+        animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <ArrowDown className="h-6 w-6 text-muted-foreground" />
+        <span className="text-xs text-muted-foreground tracking-widest uppercase">
+          Scroll
+        </span>
+        <ArrowDown className="h-4 w-4 text-muted-foreground" />
       </motion.div>
     </section>
   );
