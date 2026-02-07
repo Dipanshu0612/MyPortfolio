@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/lib/data";
-import { motion } from "framer-motion";
+
 import { ArrowUp } from "lucide-react";
-import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import SocialLinks from "@/components/social-links";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -51,43 +51,7 @@ export default function Footer() {
             <h4 className="font-medium text-sm mb-4 text-muted-foreground uppercase tracking-wider">
               Connect
             </h4>
-            <div className="flex gap-2">
-              {[
-                {
-                  icon: FaGithub,
-                  href: personalInfo.social.github,
-                  label: "GitHub",
-                },
-                {
-                  icon: FaLinkedin,
-                  href: personalInfo.social.linkedin,
-                  label: "LinkedIn",
-                },
-                {
-                  icon: FaInstagram,
-                  href: personalInfo.social.instagram,
-                  label: "Instagram",
-                },
-                {
-                  icon: FaWhatsapp,
-                  href: personalInfo.social.whatsapp,
-                  label: "WhatsApp",
-                },
-              ].map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-xl glass flex items-center justify-center hover:border-primary/40 transition-all"
-                >
-                  <social.icon className="h-4 w-4" />
-                </motion.a>
-              ))}
-            </div>
+            <SocialLinks size="sm" className="flex gap-2" />
           </div>
         </div>
 

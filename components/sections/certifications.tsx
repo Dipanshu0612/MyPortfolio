@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "@/components/section-header";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,19 +28,12 @@ export default function Certifications() {
       <div className="orb orb-cyan w-[250px] h-[250px] bottom-10 right-10 opacity-20" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Certifications & <span className="gradient-text">Achievements</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Recognitions, certifications, and competitive milestones
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Certifications &"
+          gradient="Achievements"
+          subtitle="Recognitions, certifications, and competitive milestones"
+          isInView={isInView}
+        />
 
         {/* Certifications grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">

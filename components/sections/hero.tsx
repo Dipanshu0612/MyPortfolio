@@ -6,7 +6,7 @@ import { personalInfo } from "@/lib/data";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
-import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import SocialLinks from "@/components/social-links";
 
 const roles = [
   "Full Stack Developer",
@@ -202,41 +202,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            {[
-              {
-                icon: FaGithub,
-                href: personalInfo.social.github,
-                label: "GitHub",
-              },
-              {
-                icon: FaLinkedin,
-                href: personalInfo.social.linkedin,
-                label: "LinkedIn",
-              },
-              {
-                icon: FaInstagram,
-                href: personalInfo.social.instagram,
-                label: "Instagram",
-              },
-              {
-                icon: FaWhatsapp,
-                href: personalInfo.social.whatsapp,
-                label: "WhatsApp",
-              },
-            ].map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-11 h-11 rounded-xl glass flex items-center justify-center hover:border-primary/40 transition-all"
-              >
-                <social.icon className="h-5 w-5" />
-              </motion.a>
-            ))}
+            <SocialLinks />
           </motion.div>
         </div>
       </div>

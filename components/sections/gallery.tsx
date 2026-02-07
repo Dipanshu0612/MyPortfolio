@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "@/components/section-header";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useCallback } from "react";
 import { gallery } from "@/lib/data";
@@ -44,29 +45,22 @@ export default function Gallery() {
       <div className="orb orb-indigo w-[250px] h-[250px] bottom-10 -left-10 opacity-15" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Life <span className="gradient-text">Gallery</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Moments from my journey - work, campus, and everything in between
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Life"
+          gradient="Gallery"
+          subtitle="Moments from my journey - work, campus, and everything in between"
+          isInView={isInView}
+        />
 
         {/* Album grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-5 max-w-5xl mx-auto">
           {gallery.map((album, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group cursor-pointer"
+              className="group cursor-pointer w-[calc(50%-10px)] md:w-[calc(33.333%-14px)]"
               onClick={() => openAlbum(index)}
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-border group-hover:border-primary/30 transition-all">

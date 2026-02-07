@@ -52,7 +52,9 @@ const commands = [
     label: "Projects",
     icon: Briefcase,
     action: () => {
-      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("projects")
+        ?.scrollIntoView({ behavior: "smooth" });
     },
   },
   {
@@ -60,7 +62,9 @@ const commands = [
     label: "Experience",
     icon: Briefcase,
     action: () => {
-      document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("experience")
+        ?.scrollIntoView({ behavior: "smooth" });
     },
   },
   {
@@ -76,7 +80,9 @@ const commands = [
     label: "Certifications",
     icon: ShieldCheck,
     action: () => {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth" });
     },
   },
   {
@@ -84,7 +90,9 @@ const commands = [
     label: "Gallery",
     icon: Image,
     action: () => {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth" });
     },
   },
   {
@@ -92,7 +100,9 @@ const commands = [
     label: "Contact",
     icon: Mail,
     action: () => {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth" });
     },
   },
   {
@@ -121,7 +131,7 @@ export default function CommandPalette() {
   }, []);
 
   const filteredCommands = commands.filter((command) =>
-    command.label.toLowerCase().includes(search.toLowerCase())
+    command.label.toLowerCase().includes(search.toLowerCase()),
   );
 
   useEffect(() => {
@@ -139,12 +149,12 @@ export default function CommandPalette() {
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setSelectedIndex((prev) =>
-        prev < filteredCommands.length - 1 ? prev + 1 : 0
+        prev < filteredCommands.length - 1 ? prev + 1 : 0,
       );
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setSelectedIndex((prev) =>
-        prev > 0 ? prev - 1 : filteredCommands.length - 1
+        prev > 0 ? prev - 1 : filteredCommands.length - 1,
       );
     } else if (e.key === "Enter" && filteredCommands[selectedIndex]) {
       e.preventDefault();
@@ -170,9 +180,9 @@ export default function CommandPalette() {
             className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground"
             autoFocus
           />
-          <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded-md border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+          {/* <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded-md border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
             ESC
-          </kbd>
+          </kbd> */}
         </div>
         <div className="max-h-[350px] overflow-y-auto p-2">
           <AnimatePresence mode="wait">

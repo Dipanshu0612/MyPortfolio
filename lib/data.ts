@@ -1,4 +1,6 @@
-import { Code } from "lucide-react";
+import { cloudflare } from "@/config/cloudflare";
+
+const r2 = (path: string) => `${cloudflare.r2.publicUrl}${path}`;
 
 export const personalInfo = {
   name: "Dipanshu Mishra",
@@ -159,7 +161,7 @@ export const projects = [
     title: "Restaurant Management Platform",
     description:
       "Large-scale SaaS platform supporting restaurant onboarding, operations, restaurant websites, food ordering, reusable widgets, and SSO-based access. Integrated Stripe payments and payouts with SSR/ISR for SEO optimization.",
-    image: "/images/project-images/cnf.png",
+    image: r2("/images/project-images/cnf.png"),
     tags: [
       "Next.js",
       "Next Auth",
@@ -178,7 +180,7 @@ export const projects = [
     title: "Affiliate & Rewards Platform",
     description:
       "User-facing platform owned end-to-end and delivered for two clients. Enables affiliate link generation, postback management, reward tracking, and earnings visualization via reports and graphs.",
-    image: "/images/project-images/affiliate.png",
+    image: r2("/images/project-images/affiliate.png"),
     tags: ["Next.js", "Supabase", "Auth", "Analytics", "Charts"],
     link: "https://affiliates.savebucks.app/signin",
     github: "#",
@@ -187,10 +189,22 @@ export const projects = [
   },
   {
     id: 3,
+    title: "Farmer Mart - A eCommerce Platform",
+    description:
+      "An E-Commerce NextJs project where users can browse and shop products from local farmers. Admin panel for managing products, orders, and users. Built during internship at EnactOn Technologies.",
+    image: r2("/images/project-images/PUTMS.png"),
+    tags: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS", "Clerk Auth"],
+    link: "#",
+    github: "#",
+    featured: false,
+    type: "Internship",
+  },
+  {
+    id: 4,
     title: "PU Transport Management System",
     description:
       "Comprehensive web app for Parul University users to access bus timings, routes, and passes. Includes an admin panel for managing users and buses.",
-    image: "/images/project-images/PUTMS.png",
+    image: r2("/images/project-images/PUTMS.png"),
     tags: ["React", "Node.js", "Express", "MongoDB"],
     link: "#",
     github: "#",
@@ -198,11 +212,11 @@ export const projects = [
     type: "Academic",
   },
   {
-    id: 4,
+    id: 5,
     title: "CPC Canteen Management",
     description:
       "System built during Vadodara Police Hackathon 2023 for police personnel and servicemen for easy access to canteen items and inventory management.",
-    image: "/images/project-images/CPC.png",
+    image: r2("/images/project-images/CPC.png"),
     tags: ["React", "Node.js", "MongoDB"],
     link: "https://cpc-canteen-management.netlify.app/",
     github: "#",
@@ -210,11 +224,11 @@ export const projects = [
     type: "Hackathon",
   },
   {
-    id: 5,
+    id: 6,
     title: "Basic Banking System",
     description:
       "A banking system where users can view and perform transactions between multiple users. Built during virtual internship at The Sparks Foundation.",
-    image: "/images/project-images/BasicBanking.png",
+    image: r2("/images/project-images/BasicBanking.png"),
     tags: ["React", "Tailwind CSS", "Firebase"],
     link: "#",
     github: "#",
@@ -222,23 +236,23 @@ export const projects = [
     type: "Internship",
   },
   {
-    id: 6,
+    id: 7,
     title: "LinkedIn Clone",
     description:
       "A LinkedIn clone with user authentication, profile management, post creation, and a responsive design built using NextJs.",
-    image: "/images/project-images/LinkedIn.png",
-    tags: ["Next.js", "Tailwind CSS", "Firebase"],
+    image: r2("/images/project-images/LinkedIn.png"),
+    tags: ["Next.js", "Tailwind CSS", "MongoDB", "Clerk Auth"],
     link: "#",
     github: "#",
     featured: false,
     type: "Side Project",
   },
   {
-    id: 7,
+    id: 8,
     title: "House of the Dragon Website",
     description:
       "A clone website of HBO's House of The Dragon TV show featuring trailers, cast information, and series details with engaging animations.",
-    image: "/images/project-images/HOTD.jpg",
+    image: r2("/images/project-images/HOTD.jpg"),
     tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     link: "https://house-of-the-dragon-alternate.netlify.app/",
     github: "#",
@@ -246,11 +260,11 @@ export const projects = [
     type: "Side Project",
   },
   {
-    id: 8,
+    id: 9,
     title: "Music Player by Emotions",
     description:
       "AI-powered music player that identifies emotions and plays songs accordingly using Python and web technologies.",
-    image: "/images/project-images/MusicPlayer.png",
+    image: r2("/images/project-images/MusicPlayer.png"),
     tags: ["Python", "AI/ML", "JavaScript"],
     link: "https://music-player-emotions-dipanshu.netlify.app/",
     github: "#",
@@ -450,71 +464,78 @@ export const certifications = [
 export const gallery = [
   {
     title: "EnactOn Technologies - Work Life",
-    cover: "/images/gallery-images/enacton/enacton-1.JPG",
+    cover: r2("/images/gallery-images/enacton/enacton-1.JPG"),
     description: "Building production-grade platforms for European clients",
     images: [
-      "/images/gallery-images/enacton/enacton-1.JPG",
-      "/images/gallery-images/enacton/enacton-1.JPG",
-      "/images/gallery-images/enacton/enacton-1.JPG",
+      r2("/images/gallery-images/enacton/enacton-1.JPG"),
+      r2("/images/gallery-images/enacton/enacton-2.JPG"),
+      r2("/images/gallery-images/enacton/enacton-3.JPG"),
+      r2("/images/gallery-images/enacton/enacton-4.JPG"),
+      r2("/images/gallery-images/enacton/enacton-5.JPG"),
     ],
   },
   {
     title: "Explorer Club - Technical Co-Lead",
-    cover: "/images/gallery-images/explorer/explorer-1.JPG",
+    cover: r2("/images/gallery-images/explorer/explorer-1.JPG"),
     description:
       "Leading technical events at Parul Institute of Technology with 500+ participants",
     images: [
-      "/images/gallery-images/explorer/explorer-1.JPG",
-      "/images/gallery-images/explorer/explorer-2.JPG",
-      "/images/gallery-images/explorer/explorer-3.JPG",
-      "/images/gallery-images/explorer/explorer-3.JPG",
-      "/images/gallery-images/explorer/explorer-5.DNG",
-      "/images/gallery-images/explorer/explorer-6.JPG",
-      "/images/gallery-images/explorer/explorer-6.JPG",
-      "/images/gallery-images/explorer/explorer-last.JPG",
-    ],
-  },
-  {
-    title: "Vadodara Police Hackathon 2023",
-    cover: "/images/gallery-images/CPC.png",
-    description: "Building CPC Canteen Management System at the hackathon",
-    images: [
-      "/images/gallery-images/CPC.png",
-      "/images/gallery-images/CPC.png",
-      "/images/gallery-images/CPC.png",
+      r2("/images/gallery-images/explorer/explorer-1.JPG"),
+      r2("/images/gallery-images/explorer/explorer-2.JPG"),
+      r2("/images/gallery-images/explorer/explorer-3.JPG"),
+      r2("/images/gallery-images/explorer/explorer-4.jpeg"),
+      r2("/images/gallery-images/explorer/explorer-5.jpeg"),
+      r2("/images/gallery-images/explorer/explorer-6.jpeg"),
+      r2("/images/gallery-images/explorer/explorer-7.JPG"),
+      r2("/images/gallery-images/explorer/explorer-8.jpeg"),
+      r2("/images/gallery-images/explorer/explorer-9.JPG"),
+      r2("/images/gallery-images/explorer/explorer-10.JPG"),
+      r2("/images/gallery-images/explorer/explorer-last.JPG"),
     ],
   },
   {
     title: "Vadodara Startup Festival",
-    cover: "/images/gallery-images/vsf/vsf-1.JPG",
+    cover: r2("/images/gallery-images/vsf/vsf-1.JPG"),
     description: "Volunteering as Technical Team Member at the startup fest",
     images: [
-      "/images/gallery-images/vsf/vsf-1.JPG",
-      "/images/gallery-images/vsf/vsf-2.jpeg",
-      "/images/gallery-images/vsf/vsf-3.JPG",
-      "/images/gallery-images/vsf/vsf-4.JPG",
-      "/images/gallery-images/vsf/vsf-last.jpeg",
+      r2("/images/gallery-images/vsf/vsf-1.JPG"),
+      r2("/images/gallery-images/vsf/vsf-2.jpeg"),
+      r2("/images/gallery-images/vsf/vsf-3.JPG"),
+      r2("/images/gallery-images/vsf/vsf-4.JPG"),
+      r2("/images/gallery-images/vsf/vsf-5.JPG"),
+      r2("/images/gallery-images/vsf/vsf-6.JPG"),
+      r2("/images/gallery-images/vsf/vsf-7.jpeg"),
+      r2("/images/gallery-images/vsf/vsf-last.jpeg"),
     ],
   },
   {
     title: "Parul University - Campus Life",
-    cover: "/images/gallery-images/PUTMS.png",
+    cover: r2("/images/gallery-images/parul/parul-0.JPG"),
     description: "B.Tech Computer Science journey and campus activities",
     images: [
-      "/images/gallery-images/PUTMS.png",
-      "/images/gallery-images/PUTMS.png",
-      "/images/gallery-images/PUTMS.png",
-      "/images/gallery-images/PUTMS.png",
+      r2("/images/gallery-images/parul/parul-0.JPG"),
+      r2("/images/gallery-images/parul/parul-1.jpeg"),
+      r2("/images/gallery-images/parul/parul-2.JPG"),
+      r2("/images/gallery-images/parul/parul-3.JPG"),
+      r2("/images/gallery-images/parul/parul-5.JPG"),
+      r2("/images/gallery-images/parul/parul-6.JPG"),
+      r2("/images/gallery-images/parul/parul-7.JPG"),
+      r2("/images/gallery-images/parul/parul-8.JPG"),
+      r2("/images/gallery-images/parul/parul-9.JPG"),
+      r2("/images/gallery-images/parul/parul-10.JPG"),
+      r2("/images/gallery-images/parul/parul-11.JPG"),
     ],
   },
   {
     title: "Innovation Ambassador",
-    cover: "/images/gallery-images/pierc/pierc-1.JPG",
+    cover: r2("/images/gallery-images/pierc/pierc-1.JPG"),
     description: "Student Innovation Ambassador at Parul Innovation Centre",
     images: [
-      "/images/gallery-images/pierc/pierc-1.JPG",
-      "/images/gallery-images/pierc/pierc-2.JPG",
-      "/images/gallery-images/pierc/pierc-3.jpeg",
+      r2("/images/gallery-images/pierc/pierc-1.JPG"),
+      r2("/images/gallery-images/pierc/pierc-2.JPG"),
+      r2("/images/gallery-images/pierc/pierc-3.jpeg"),
+      r2("/images/gallery-images/pierc/pierc-4.JPG"),
+      r2("/images/gallery-images/pierc/pierc-5.JPG"),
     ],
   },
 ];

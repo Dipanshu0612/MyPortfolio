@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "@/components/section-header";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -85,19 +86,13 @@ export default function Skills() {
       <div className="orb orb-blue w-[200px] h-[200px] bottom-10 -left-10 opacity-20" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+        <SectionHeader
+          title="Technical"
+          gradient="Stack"
+          subtitle="Technologies I use to ship production-ready applications"
+          isInView={isInView}
           className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Technical <span className="gradient-text">Stack</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Technologies I use to ship production-ready applications
-          </p>
-        </motion.div>
+        />
 
         {/* Marquee */}
         <motion.div

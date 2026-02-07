@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "@/components/section-header";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { stats } from "@/lib/data";
@@ -28,19 +29,12 @@ export default function About() {
       <div className="orb orb-indigo w-[250px] h-[250px] bottom-0 left-10 opacity-25" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            About <span className="gradient-text">Me</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Building production-grade software that scales
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="About"
+          gradient="Me"
+          subtitle="Building production-grade software that scales"
+          isInView={isInView}
+        />
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left - Visual */}

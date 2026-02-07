@@ -7,7 +7,8 @@ import { personalInfo } from "@/lib/data";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone, Send } from "lucide-react";
 import { useRef, useState } from "react";
-import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import SocialLinks from "@/components/social-links";
+import SectionHeader from "@/components/section-header";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -43,19 +44,12 @@ export default function Contact() {
       <div className="orb orb-blue w-[200px] h-[200px] bottom-10 left-10 opacity-20" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Get In <span className="gradient-text">Touch</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Let&apos;s connect.
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Get In"
+          gradient="Touch"
+          subtitle="Have a project in mind or want to collaborate? Let's connect."
+          isInView={isInView}
+        />
 
         <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
           {/* Contact info */}
@@ -119,43 +113,7 @@ export default function Contact() {
                   <p className="text-sm font-medium mb-4 text-muted-foreground">
                     Connect with me
                   </p>
-                  <div className="flex gap-3">
-                    {[
-                      {
-                        icon: FaGithub,
-                        href: personalInfo.social.github,
-                        label: "GitHub",
-                      },
-                      {
-                        icon: FaLinkedin,
-                        href: personalInfo.social.linkedin,
-                        label: "LinkedIn",
-                      },
-                      {
-                        icon: FaInstagram,
-                        href: personalInfo.social.instagram,
-                        label: "Instagram",
-                      },
-                      {
-                        icon: FaWhatsapp,
-                        href: personalInfo.social.whatsapp,
-                        label: "WhatsApp",
-                      },
-                    ].map((social) => (
-                      <motion.a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-11 h-11 rounded-xl glass flex items-center justify-center hover:border-primary/40 transition-all"
-                      >
-                        <social.icon className="h-5 w-5" />
-                      </motion.a>
-                    ))}
-                  </div>
+                  <SocialLinks />
                 </div>
               </CardContent>
             </Card>

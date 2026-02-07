@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "@/components/section-header";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -47,19 +48,12 @@ function EducationTimelineSection() {
   return (
     <section ref={ref} className="py-24">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Education <span className="gradient-text">Journey</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Academic foundation and campus leadership
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Education"
+          gradient="Journey"
+          subtitle="Academic foundation and campus leadership"
+          isInView={isInView}
+        />
 
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2 hidden md:block" />
@@ -171,19 +165,12 @@ function ExperienceTimelineSection() {
   return (
     <section ref={ref} className="py-24">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Work <span className="gradient-text">Experience</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Professional journey building production software
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Work"
+          gradient="Experience"
+          subtitle="Professional journey building production software"
+          isInView={isInView}
+        />
 
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2 hidden md:block" />

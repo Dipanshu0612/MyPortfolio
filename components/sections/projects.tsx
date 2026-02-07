@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "@/components/section-header";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -31,19 +32,13 @@ export default function Projects() {
       <div className="orb orb-blue w-[300px] h-[300px] top-20 -left-20 opacity-20" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+        <SectionHeader
+          title="Featured"
+          gradient="Projects"
+          subtitle="Production apps and side projects I've built"
+          isInView={isInView}
           className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Production apps and side projects I&apos;ve built
-          </p>
-        </motion.div>
+        />
 
         {/* Filter tabs */}
         <motion.div
