@@ -18,6 +18,7 @@ export default function Certifications() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+
   return (
     <section ref={ref} className="py-24 relative overflow-hidden">
       {/* Background */}

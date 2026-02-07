@@ -4,7 +4,7 @@ import SectionHeader from "@/components/section-header";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useCallback } from "react";
 import { gallery } from "@/lib/data";
-import Image from "next/image";
+import OptimizedImage from "@/components/optimized-image";
 import { X, ChevronLeft, ChevronRight, Images } from "lucide-react";
 import { FloatingCodeLight } from "@/components/floating-code";
 
@@ -64,10 +64,11 @@ export default function Gallery() {
               onClick={() => openAlbum(index)}
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-border group-hover:border-primary/30 transition-all">
-                <Image
+                <OptimizedImage
                   src={album.cover}
                   alt={album.title}
                   fill
+                  maxWidth={800}
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Overlay */}
@@ -132,10 +133,11 @@ export default function Gallery() {
               className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden mx-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
+              <OptimizedImage
                 src={gallery[activeAlbum].images[activeImage]}
                 alt={`${gallery[activeAlbum].title} - Photo ${activeImage + 1}`}
                 fill
+                maxWidth={1920}
                 className="object-contain"
               />
             </motion.div>
@@ -179,10 +181,11 @@ export default function Gallery() {
                       : "border-border opacity-50 hover:opacity-80"
                   }`}
                 >
-                  <Image
+                  <OptimizedImage
                     src={img}
                     alt={`Thumbnail ${i + 1}`}
                     fill
+                    maxWidth={200}
                     className="object-cover"
                   />
                 </button>

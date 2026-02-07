@@ -7,14 +7,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/data";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import OptimizedImage from "@/components/optimized-image";
 import { FloatingCodeLight } from "@/components/floating-code";
+import { useGalleryPrefetch } from "@/hooks/use-gallery-prefetch";
 
 const filters = ["All", "Production", "Hackathon", "Side Project", "AI/ML", "Academic", "Internship"];
 
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  useGalleryPrefetch(isInView);
   const [activeFilter, setActiveFilter] = useState("All");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -77,10 +79,11 @@ export default function Projects() {
               <Card className="h-full overflow-hidden glass border-border hover:border-primary/30 transition-all group">
                 {/* Image */}
                 <div className="relative aspect-video overflow-hidden bg-secondary">
-                  <Image
+                  <OptimizedImage
                     src={project.image}
                     alt={project.title}
                     fill
+                    maxWidth={800}
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
