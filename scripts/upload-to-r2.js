@@ -7,7 +7,13 @@ import { cloudflare } from "../config/cloudflare.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const IMAGES_DIR = path.join(__dirname, "..", "public", "images");
+const useOptimized = process.argv.includes("--optimized");
+const IMAGES_DIR = path.join(
+  __dirname,
+  "..",
+  "public",
+  useOptimized ? "images-optimized" : "images"
+);
 
 const MIME_TYPES = {
   ".jpg": "image/jpeg",
@@ -44,8 +50,9 @@ function getAllFiles(dir, fileList = []) {
 }
 
 async function uploadFile(filePath) {
-  // Key preserves structure: images/gallery-images/vsf/vsf-1.JPG
-  const key = path.relative(path.join(IMAGES_DIR, ".."), filePath);
+  // Key preserves structure: images/gallery-images/vsf/vsf-1.webp
+  const relativePath = path.relative(IMAGES_DIR, filePath);
+  const key = `images/${relativePath}`;
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME_TYPES[ext] || "application/octet-stream";
   const body = fs.readFileSync(filePath);
@@ -78,7 +85,9 @@ async function main() {
   }
 
   const files = getAllFiles(IMAGES_DIR);
-  console.log(`Found ${files.length} files to upload.\n`);
+  console.log(
+    `Source: ${useOptimized ? "images-optimized" : "images"} (${files.length} files)\n`
+  );
 
   let success = 0;
   let failed = 0;
