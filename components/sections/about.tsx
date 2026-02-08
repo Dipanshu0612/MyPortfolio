@@ -3,11 +3,10 @@
 import SectionHeader from "@/components/section-header";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { stats } from "@/lib/data";
+import { r2, stats } from "@/lib/data";
 import { Award, Briefcase, Code, GraduationCap } from "lucide-react";
 import { FloatingCodeLight } from "@/components/floating-code";
 import Image from "next/image";
-import Personal from "@/assests/Personal.jpg";
 
 const statIcons = {
   "Production Apps": Code,
@@ -47,7 +46,7 @@ export default function About() {
             <div className="aspect-square rounded-3xl overflow-hidden glass p-8">
               <div className="w-full h-full bg-gradient-to-br from-primary/10 via-cyan-500/10 to-indigo-500/10 rounded-2xl flex items-center justify-center relative">
                 <Image
-                  src={Personal}
+                  src={r2("/images/Personal.jpg")}
                   alt="Profile Picture"
                   width={400}
                   height={400}

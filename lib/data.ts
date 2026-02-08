@@ -1,6 +1,6 @@
 import { cloudflare } from "@/config/cloudflare";
 
-const r2 = (path: string) => `${cloudflare.r2.publicUrl}${path}`;
+export const r2 = (path: string) => `${cloudflare.r2.publicUrl}${path}`;
 
 export const personalInfo = {
   name: "Dipanshu Mishra",
