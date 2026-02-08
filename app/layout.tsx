@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { r2 } from "@/lib/data";
 
 const geistSans = localFont({
   src: "./fonts/GeistSans.woff2",
@@ -76,7 +77,11 @@ export default function RootLayout({
     >
       <body className={`${geistSans.className} antialiased`}>
         <head>
-          <link rel="icon" href="/images-optimized/favicon.svg" sizes="any" />
+          <link
+            rel="icon"
+            href={r2("/images-optimized/favicon.svg")}
+            sizes="any"
+          />
         </head>
         <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
           {children}
