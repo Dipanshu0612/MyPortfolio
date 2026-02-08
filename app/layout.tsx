@@ -77,11 +77,7 @@ export default function RootLayout({
     >
       <body className={`${geistSans.className} antialiased`}>
         <head>
-          <link
-            rel="icon"
-            href={r2("/images-optimized/favicon.svg")}
-            sizes="any"
-          />
+          <link rel="icon" href={r2("/images/favicon.svg")} sizes="any" />
         </head>
         <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
           {children}
