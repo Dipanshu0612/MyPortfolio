@@ -191,40 +191,71 @@ export const projects = [
     id: 3,
     title: "Farmer Mart - A eCommerce Platform",
     description:
-      "An E-Commerce NextJs project where users can browse and shop products from local farmers. Admin panel for managing products, orders, and users. Built during internship at EnactOn Technologies.",
-    image: r2("/images/project-images/PUTMS.webp"),
-    tags: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS", "Clerk Auth"],
-    link: "#",
-    github: "#",
+      "A full-stack marketplace built with Next.js where customers can discover and purchase fresh produce directly from local farmers, while sellers can manage products and track orders from a dedicated dashboard. Built during internship at EnactOn Technologies.",
+    image: r2("/images/project-images/farmer-mart.webp"),
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "Tailwind CSS",
+      "Clerk Auth",
+      "Stripe",
+    ],
+    link: "https://farmer-mart.dipanshuu.in/",
+    github: "https://github.com/Dipanshu0612/FarmerMart",
     featured: false,
     type: "Internship",
   },
   {
     id: 4,
+    title: "LinkedIn Clone",
+    description:
+      "A LinkedIn clone with user authentication, profile management, post creation, and a responsive design built using NextJs.",
+    image: r2("/images/project-images/LinkedIn.webp"),
+    tags: ["Next.js", "Tailwind CSS", "MongoDB", "Clerk Auth"],
+    link: "https://linkedin-clone.dipanshuu.in/",
+    github: "https://github.com/Dipanshu0612/LinkedIn_Clone",
+    featured: false,
+    type: "Side Project",
+  },
+  {
+    id: 5,
+    title: "D's SoulScribe - Your Personal Mental Journal",
+    description:
+      "A web app that provides users a way to write their mental state. Options are available that the user can select to categorize thier journal entry and they can also select their mood.",
+    image: r2("/images/project-images/soulscribe.webp"),
+    tags: ["React", "TypeScript", "Tailwind CSS", "localStorage"],
+    link: "https://soulscribe.dipanshuu.in/",
+    github: "https://github.com/Dipanshu0612/Mental_Jorunal",
+    featured: false,
+    type: "Internship",
+  },
+  {
+    id: 6,
     title: "PU Transport Management System",
     description:
       "Comprehensive web app for Parul University users to access bus timings, routes, and passes. Includes an admin panel for managing users and buses.",
     image: r2("/images/project-images/PUTMS.webp"),
     tags: ["React", "Node.js", "Express", "MongoDB"],
-    link: "#",
-    github: "#",
+    link: "https://putms.netlify.app/",
+    github: "https://github.com/Dipanshu0612/PUTMS",
     featured: false,
     type: "Academic",
   },
   {
-    id: 5,
+    id: 7,
     title: "CPC Canteen Management",
     description:
       "System built during Vadodara Police Hackathon 2023 for police personnel and servicemen for easy access to canteen items and inventory management.",
     image: r2("/images/project-images/CPC.webp"),
     tags: ["React", "Node.js", "MongoDB"],
     link: "https://cpc-canteen-management.netlify.app/",
-    github: "#",
+    github: "https://github.com/Dipanshu0612/CPC_Canteen_Management_System",
     featured: false,
     type: "Hackathon",
   },
   {
-    id: 6,
+    id: 8,
     title: "Basic Banking System",
     description:
       "A banking system where users can view and perform transactions between multiple users. Built during virtual internship at The Sparks Foundation.",
@@ -235,20 +266,9 @@ export const projects = [
     featured: false,
     type: "Internship",
   },
+
   {
-    id: 7,
-    title: "LinkedIn Clone",
-    description:
-      "A LinkedIn clone with user authentication, profile management, post creation, and a responsive design built using NextJs.",
-    image: r2("/images/project-images/LinkedIn.webp"),
-    tags: ["Next.js", "Tailwind CSS", "MongoDB", "Clerk Auth"],
-    link: "#",
-    github: "#",
-    featured: false,
-    type: "Side Project",
-  },
-  {
-    id: 8,
+    id: 9,
     title: "House of the Dragon Website",
     description:
       "A clone website of HBO's House of The Dragon TV show featuring trailers, cast information, and series details with engaging animations.",
@@ -260,7 +280,7 @@ export const projects = [
     type: "Side Project",
   },
   {
-    id: 9,
+    id: 10,
     title: "Music Player by Emotions",
     description:
       "AI-powered music player that identifies emotions and plays songs accordingly using Python and web technologies.",
