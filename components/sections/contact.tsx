@@ -7,8 +7,10 @@ import { personalInfo } from "@/lib/data";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone, Send } from "lucide-react";
 import { useRef, useState } from "react";
+import { toast } from "sonner";
 import SocialLinks from "@/components/social-links";
 import SectionHeader from "@/components/section-header";
+import { sendContactEmail } from "@/app/actions/contact";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -23,9 +25,16 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", message: "" });
+
+    const result = await sendContactEmail(formData);
+
+    if (result.success) {
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      toast.error(result.error || "Failed to send message. Please try again.");
+    }
+
     setIsSubmitting(false);
   };
 
