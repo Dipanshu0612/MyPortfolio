@@ -1,12 +1,12 @@
 "use client";
 
 import SectionHeader from "@/components/section-header";
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/data";
-import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Github, ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
 import { FloatingCodeLight } from "@/components/floating-code";
 
@@ -16,12 +16,32 @@ export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeFilter, setActiveFilter] = useState("All");
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const filtered =
     activeFilter === "All"
       ? projects
       : projects.filter((p) => p.type === activeFilter);
+
+  const expandedProject = expandedId
+    ? projects.find((p) => p.id === expandedId)
+    : null;
+
+  const close = useCallback(() => setExpandedId(null), []);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    if (expandedId) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKey);
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [expandedId, close]);
 
   return (
     <section id="projects" ref={ref} className="py-24 relative">
@@ -66,13 +86,13 @@ export default function Projects() {
           {filtered.map((project, index) => (
             <motion.div
               key={project.id}
-              layout
+              layoutId={`project-card-${project.id}`}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => setExpandedId(project.id)}
+              className="cursor-pointer"
             >
               <Card className="h-full overflow-hidden glass border-border hover:border-primary/30 transition-all group">
                 {/* Image */}
@@ -91,33 +111,6 @@ export default function Projects() {
                       {project.type}
                     </span>
                   </div>
-
-                  {/* Hover overlay buttons */}
-                  <motion.div
-                    className="absolute inset-0 flex items-center justify-center gap-3"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: hoveredIndex === index ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {project.link !== "#" && (
-                      <Button size="sm" variant="secondary" className="shadow-lg" asChild>
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4 mr-1.5" />
-                          Demo
-                        </a>
-                      </Button>
-                    )}
-                    {project.github !== "#" && (
-                      <Button size="sm" variant="secondary" className="shadow-lg" asChild>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4 mr-1.5" />
-                          Code
-                        </a>
-                      </Button>
-                    )}
-                  </motion.div>
                 </div>
 
                 {/* Content */}
@@ -147,6 +140,90 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      {/* Expanded overlay */}
+      <AnimatePresence>
+        {expandedProject && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={close}
+            />
+
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none">
+              <motion.div
+                layoutId={`project-card-${expandedProject.id}`}
+                className="w-full max-w-2xl max-h-[90vh] overflow-y-auto pointer-events-auto rounded-xl"
+                transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              >
+                <Card className="overflow-hidden glass border-border shadow-2xl shadow-primary/10 relative">
+                  <button
+                    onClick={close}
+                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/80 border border-border backdrop-blur-sm hover:bg-background transition-colors"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+
+                  <div className="relative aspect-video overflow-hidden bg-secondary">
+                    <Image
+                      src={expandedProject.image}
+                      alt={expandedProject.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                    <div className="absolute top-3 left-3">
+                      <span className="px-3 py-1 text-xs font-medium rounded-full bg-background/80 border border-border backdrop-blur-sm">
+                        {expandedProject.type}
+                      </span>
+                    </div>
+                  </div>
+
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-3">
+                      {expandedProject.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+                      {expandedProject.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {expandedProject.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-1 text-xs rounded-md bg-primary/5 text-primary/80 border border-primary/10"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3">
+                      {expandedProject.link !== "#" && (
+                        <Button size="sm" asChild>
+                          <a href={expandedProject.link} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-1.5" />
+                            Live Demo
+                          </a>
+                        </Button>
+                      )}
+                      {expandedProject.github !== "#" && (
+                        <Button size="sm" variant="outline" asChild>
+                          <a href={expandedProject.github} target="_blank" rel="noopener noreferrer">
+                            <Github className="h-4 w-4 mr-1.5" />
+                            Source Code
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

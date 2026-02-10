@@ -158,17 +158,22 @@ export const skillCategories = [
 export const projects = [
   {
     id: 1,
-    title: "Restaurant Management Platform",
+    title:
+      "Restaurant Management & Ordering Platform (Multi-Product Ecosystem)",
     description:
-      "Large-scale SaaS platform supporting restaurant onboarding, operations, restaurant websites, food ordering, reusable widgets, and SSO-based access. Integrated Stripe payments and payouts with SSR/ISR for SEO optimization.",
+      "Designed, developed, and maintained a scalable SaaS ecosystem enabling restaurants to manage onboarding, operations, websites, and online ordering. Built reusable React widgets and an SSO-based access system to unify multiple platforms. Integrated Stripe for secure payments and automated payouts, and implemented SSR/ISR for improved SEO and performance across public-facing applications.",
     image: r2("/images/project-images/cnf.webp"),
     tags: [
       "Next.js",
-      "Next Auth",
-      "Stripe",
-      "SSR/ISR",
+      "React",
+      "TypeScript",
+      "Stripe Payments & Payouts",
+      "SSR / ISR",
       "Supabase",
+      "REST APIs",
       "SEO Optimization",
+      "RBAC",
+      "Umami Analytics",
     ],
     link: "https://clickandfood.sparissimo.world/",
     github: "#",
@@ -181,7 +186,7 @@ export const projects = [
     description:
       "User-facing platform owned end-to-end and delivered for two clients. Enables affiliate link generation, postback management, reward tracking, and earnings visualization via reports and graphs.",
     image: r2("/images/project-images/affiliate.webp"),
-    tags: ["Next.js", "Supabase", "Auth", "Analytics", "Charts"],
+    tags: ["Next.js", "MySQL", "Tailwind CSS", "Analytics", "Charts"],
     link: "https://affiliates.savebucks.app/signin",
     github: "#",
     featured: true,
